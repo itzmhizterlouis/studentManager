@@ -3,7 +3,10 @@ package com.marvellous.StudentManager.models.entities;
 import com.marvellous.StudentManager.models.enums.HealthStatus;
 import com.marvellous.StudentManager.models.enums.ScholarshipStatus;
 import com.marvellous.StudentManager.models.responses.StudentResponse;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.Getter;
@@ -14,16 +17,21 @@ import lombok.Setter;
 @Entity
 public class Student {
 
+    @Column
     private String firstName;
     private String lastName;
     private String matricNumber;
     private String address;
     private String city;
+    private String state;
     private int age;
     private String courseName;
-    private double GPA;
+    private double gpa;
     private long fees;
+
+    @Enumerated(EnumType.ORDINAL)
     private ScholarshipStatus scholarshipStatus;
+    @Enumerated(EnumType.STRING)
     private HealthStatus healthStatus;
     private String club;
 
